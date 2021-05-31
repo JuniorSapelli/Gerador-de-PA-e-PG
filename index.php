@@ -86,6 +86,6 @@
             <?php foreach ($resultado as $value){
                 echo "$value <br>";
         } }?>
-    </div>
+    </div> 
 </body>
 </html>
