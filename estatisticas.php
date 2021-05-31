@@ -25,21 +25,14 @@
 
 <body>
     <div class="formulario">
-        <form action="" method="post">
-            <h1>Gerador de PA e PG</h1>
-            <select name="menu" id="menu">
-                <option value=""></option>
-                <option value="index">Inserir as informações e o tipo da progressão</option>
-                <option value="charts">Gerar gráfico de linhas da progressão (Google Charts)</option>
-                <input type="submit" name="enviar" id="enviar" value="Enviar">
-            </select>
-        </form>
         <?php
             if ($menu == "index"){
                 header('Location: index.php');
                 exit;
             }
         ?>
+    </div>
+    <div>
     </div>
 </body>
 </html>
