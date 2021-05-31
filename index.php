@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<?php
+    //valores informados
+    $arquivo = (isset($_POST['arquivo']) ? $_POST['arquivo'] : "") .".json";
+    $a1 = (isset($_POST['a1']) ? $_POST['a1'] : 0);
+    $razao = (isset($_POST['razao']) ? $_POST['razao'] : 0);
+    $qtd = (isset($_POST['quantidade']) ? $_POST['quantidade'] : 0);
+    $progressao = (isset($_POST['progressao']) ? $_POST['progressao'] : "");
+
+    //função que gera a PA
+    function gerarPA($a1, $razao, $qtd){
+        $resultado = [];
+
+        for($k = 1; $k <= $qtd; $k++){
+            $resultado[$k] = $a1 + ($k - 1) * $razao;
+        }
+        return $resultado;
+    }
+
+    //função que gera a PG
+    function gerarPG($a1, $razao, $qtd){
+        $resultado = [];
+
+        for($k = 1; $k <= $qtd; $k++){
+            $resultado[$k] = $a1 * pow($razao, ($k - 1));
+        }
+        return $resultado;
+    }
+?>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+.container {
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+</style>
+
+<body>
+    <div class="container">
+        <form action="" method="post" class="formulario">
+            <label for="arquivo">Nome do arquivo</label>
+                <input type="text" name="arquivo" id="arquivo">
+            <label for="a1">Primeiro elemento: </label>
+                <input type="text" name="a1">
+            <label for="razao">Razão: </label>
+                <input type="text" name="razao">
+            <label for="qtd">Quantidade de elementos: </label>
+                <input type="text" name="qtd">
+            <label for="tipo">Tipo de progessão: </label>
+                <select name="progressao" id="progressao">
+                    <option value="PA">Progressão Aritmética </option>
+                    <option value="PG">Progressão Geométrica </option>
+            <input type="submit" name="enviar" id="enviar" value="Enviar">
+        </form>
+    </div>
+
+    <?php
+        if($progressao == "PA"){
+            $resultado = gerarPA($a1, $razao, $qtd);
+            $json = json_encode($resultado);
+            $file = fopen($arquivo, 'w');
+            fwrite($file, json_encode($json));
+        } else if($progressao == "PG"){
+            $resultado = gerarPG($a1, $razao, $qtd);
+            $json = json_encode($resultado);
+            $file = fopen($arquivo, 'w');
+            fwrite($file, json_encode($json));
+        }
+    ?>
+</body>
+</html>
