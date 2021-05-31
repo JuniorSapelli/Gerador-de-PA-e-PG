@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <?php
+    //variável do menu
+    $menu = (isset($_POST['menu']) ? $_POST['menu'] : "");
     //valores informados
     $arquivo = (isset($_POST['arquivo']) ? $_POST['arquivo'] : "") .".json";
     $a1 = (isset($_POST['a1']) ? $_POST['a1'] : 0);
@@ -12,7 +14,7 @@
         $resultado = [];
 
         for($k = 1; $k <= $qtd; $k++){
-            $resultado[$k] = $a1 + ($k - 1) * $razao;
+            $resultado[] = $a1 + ($k - 1) * $razao;
         }
         return $resultado;
     }
@@ -22,7 +24,7 @@
         $resultado = [];
 
         for($k = 1; $k <= $qtd; $k++){
-            $resultado[$k] = $a1 * pow($razao, ($k - 1));
+            $resultado[] = $a1 * pow($razao, ($k - 1));
         }
         return $resultado;
     }
@@ -42,8 +44,7 @@
 ?>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador PA e PG</title>
 </head>
