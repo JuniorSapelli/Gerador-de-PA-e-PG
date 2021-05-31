@@ -26,6 +26,19 @@
         }
         return $resultado;
     }
+
+    //gera a progressão de acordo com os dados informados
+    if($progressao == "PA"){
+        $resultado = gerarPA($a1, $razao, $qtd);
+        $json = json_encode($resultado);
+        $file = fopen($arquivo, 'w');
+        fwrite($file, $json);
+    } else if($progressao == "PG"){
+        $resultado = gerarPG($a1, $razao, $qtd);
+        $json = json_encode($resultado);
+        $file = fopen($arquivo, 'w');
+        fwrite($file, $json);
+    }
 ?>
 <html lang="en">
 <head>
@@ -66,19 +79,13 @@
             <input type="submit" name="enviar" id="enviar" value="Enviar">
         </form>
     </div>
-
-    <?php
-        if($progressao == "PA"){
-            $resultado = gerarPA($a1, $razao, $qtd);
-            $json = json_encode($resultado);
-            $file = fopen($arquivo, 'w');
-            fwrite($file, $json);
-        } else if($progressao == "PG"){
-            $resultado = gerarPG($a1, $razao, $qtd);
-            $json = json_encode($resultado);
-            $file = fopen($arquivo, 'w');
-            fwrite($file, $json);
-        }
-    ?>
+    <div class="formulario">
+        <?php
+        if($progressao != null){?>
+            <label>Progressão Gerada</label>
+            <?php foreach ($resultado as $value){
+                echo "$value <br>";
+        } }?>
+    </div>
 </body>
 </html>
