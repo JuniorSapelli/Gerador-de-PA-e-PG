@@ -4,7 +4,7 @@
     $arquivo = (isset($_POST['arquivo']) ? $_POST['arquivo'] : "") .".json";
     $a1 = (isset($_POST['a1']) ? $_POST['a1'] : 0);
     $razao = (isset($_POST['razao']) ? $_POST['razao'] : 0);
-    $qtd = (isset($_POST['quantidade']) ? $_POST['quantidade'] : 0);
+    $qtd = (isset($_POST['qtd']) ? $_POST['qtd'] : 0);
     $progressao = (isset($_POST['progressao']) ? $_POST['progressao'] : "");
 
     //função que gera a PA
@@ -72,12 +72,12 @@
             $resultado = gerarPA($a1, $razao, $qtd);
             $json = json_encode($resultado);
             $file = fopen($arquivo, 'w');
-            fwrite($file, json_encode($json));
+            fwrite($file, $json);
         } else if($progressao == "PG"){
             $resultado = gerarPG($a1, $razao, $qtd);
             $json = json_encode($resultado);
             $file = fopen($arquivo, 'w');
-            fwrite($file, json_encode($json));
+            fwrite($file, $json);
         }
     ?>
 </body>
