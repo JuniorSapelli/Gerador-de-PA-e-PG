@@ -42,6 +42,9 @@
             } else if($menu == "estatisticas"){
                 header('Location: estatisticas.php');
                 exit;
+            } else if($menu == "charts"){
+                header('Location: charts.php');
+                exit;
             }
         ?>
     </div>
