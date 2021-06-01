@@ -29,15 +29,15 @@
             <h1>Menu - Gerador de PA e PG</h1>
             <select name="menu" id="menu">
                 <option value=""></option>
-                <option value="index">Inserir as informações e o tipo da progressão</option>
+                <option value="geraProgressao">Inserir as informações e o tipo da progressão</option>
                 <option value="estatisticas">Mostrar as estatísticas da progressão gerada</option>
                 <option value="charts">Gerar gráfico de linhas da progressão (Google Charts)</option>
                 <input type="submit" name="enviar" id="enviar" value="Enviar">
             </select>
         </form>
         <?php
-            if ($menu == "index"){
-                header('Location: index.php');
+            if ($menu == "geraProgressao"){
+                header('Location: geraProgressao.php');
                 exit;
             } else if($menu == "estatisticas"){
                 header('Location: estatisticas.php');

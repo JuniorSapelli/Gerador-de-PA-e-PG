@@ -25,14 +25,13 @@
 
 <body>
     <div class="formulario">
-        <?php
-            if ($menu == "index"){
-                header('Location: index.php');
-                exit;
-            }
-        ?>
-    </div>
-    <div>
+        <fieldset>
+            <form class="form-data" method="POST">
+                <label for="arquivo">Arquivo:</label>
+                <input type="file" name="arquivo">
+                <input type="submit" name="enviar" id="enviar" value="Enviar">
+            </form>
+        </fieldset>
     </div>
 </body>
 </html>
